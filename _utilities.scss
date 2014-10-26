@@ -1,0 +1,70 @@
+//Import fonts if they are defined in the config file
+@if variable-exists(font-url) {
+  @import url($font-url);
+}
+
+/*******Extends*********/
+//Clearfix
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+//Placeholder for psuedo-element shapes
+%pseudos {
+  display: block;
+  content: '';
+  position: absolute;
+}
+
+/********Functions***********/
+//Pixels to em function ($base__font-size must be set in config)
+@function em($target, $context: $base__font-size) {
+  @return ($target / $context) * 1em;
+}
+
+//Function for getting specific shades from the color palette defined in config
+@funtion palette($palette, $shade: base) {
+  @return map-get(map-get($palettes, $palette), $shade); 
+}
+
+
+/*********Mixins*********/
+//Mixin for defining background colors for UI elements
+//USAGE: add to a css rule to apply generate classes for every color in the given map
+@mixin bg-colors($map) {
+  @each $theme, $color in $map {
+    &--#{$theme} {
+      background-color: $color;
+    }
+  }
+}
+
+//Mixin for background images.  $img is the file name, $path--rel must be defined in config ('../img' by default)
+@mixin img-replace($img, $w, $h, $disp: block) {
+  background-image: url('#{$path--rel}/#{$img}');
+  background-repeat: no-repeat;
+  width: $w;
+  height: $h;
+  display: $disp;
+}
+
+
+//Mixin for creating psuedo element shapes. Takes additional content.
+@mixin p-el($el, $el-w: null, $el-h: null) {
+  @if $el == "before" or $el == "after" {
+    &:#{el} {
+      @extend %psuedos;
+      width: $el-w;
+      height: $el-h;
+      @content;
+    }
+  }
+  @else {
+    @warn "#{el} is not a valid pseudo-element.";
+    @error "#{el} is not a valid pseudo-element.";
+  }
+}

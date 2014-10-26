@@ -1,0 +1,75 @@
+/******************
+This is an empty config file for sss-toolkit that will need to be modified
+with your desired values in order for much of the toolkit to function
+******************/
+
+// Font Stacks
+
+$font-url               : ;
+
+$font-family--primary   : ;
+
+$font-family--secondary : ;
+
+// Font Weights
+
+$font-weight--thin       : 100;
+$font-weight--light      : 300;
+$font-weight--medium     : 400;
+$font-weight--bold       : 700;
+$font-weight--ultra-bold : 900;
+
+// Base Colors
+
+$white    :    #ffffff;
+$black    :    #000000;
+/*Add additional colors here*/
+
+// Color Usage
+
+$color-primary   : ;
+$color-secondary : ;
+$color-accent    : ;
+$color-shadow    : ;
+
+// Text
+
+$base__font-size : 16px;
+$base__line      : 24px;
+
+
+/**********COLORS**********/
+
+//Define UI colors map
+$ui-colors: (
+  default : ,
+  success : ,
+  error   : ,
+  warning : ,
+  info    : 
+);
+
+//Define shades for each UI color
+$palettes: (
+  /*COLOR*/: (
+    xx-light : lighten(/*COLOR*/, 43%),
+    x-light  : lighten(/*COLOR*/, 35%),
+    light    : lighten(/*COLOR*/, 12%),
+    base     : /*COLOR*/,
+    dark     : darken(/*COLOR*/, 8%),
+    x-dark   : darken(/*COLOR*/, 16%),
+    xx-dark  : darken(/*COLOR*/, 35%)
+  ),
+  /*COLOR*/: (
+    xx-light : lighten(/*COLOR*/, 43%),
+    x-light  : lighten(/*COLOR*/, 35%),
+    light    : lighten(/*COLOR*/, 12%),
+    base     : /*COLOR*/,
+    dark     : darken(/*COLOR*/, 8%),
+    x-dark   : darken(/*COLOR*/, 16%)
+    xx-dark  : darken(/*COLOR*/, 35%)
+  )
+);
+
+//IMAGES
+$path--rel: '../img';
