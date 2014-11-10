@@ -3,23 +3,6 @@
   @import url($font-url);
 }
 
-/*******Extends*********/
-//Clearfix
-%clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-//Placeholder for psuedo-element shapes
-%pseudos {
-  display: block;
-  content: '';
-  position: absolute;
-}
-
 /********Functions***********/
 //Pixels to em function ($base__font-size must be set in config)
 @function em($target, $context: $base__font-size) {
@@ -27,8 +10,14 @@
 }
 
 //Function for getting specific shades from the color palette defined in config
-@funtion palette($palette, $shade: base) {
+@function palette($palette, $shade: base) {
   @return map-get(map-get($palettes, $palette), $shade); 
+}
+
+//Function to set the context width for the grid
+@function g-context($g-col-width, $g-col-count, $g-gutter-width) {
+  $g-context: ($g-col-width * $g-col-count) + ($g-gutter-width * ($g-col-count - 1));
+  @return $g-context;
 }
 
 
@@ -52,7 +41,6 @@
   display: $disp;
 }
 
-
 //Mixin for creating psuedo element shapes. Takes additional content.
 @mixin p-el($el, $el-w: null, $el-h: null) {
   @if $el == "before" or $el == "after" {
@@ -66,5 +54,26 @@
   @else {
     @warn "#{el} is not a valid pseudo-element.";
     @error "#{el} is not a valid pseudo-element.";
+  }
+}
+
+//Adjacent sibling margins
+@mixin doubly($margin: 1em) {
+  & + & {
+    margin-left: $margin;
+    @content;
+  }
+}
+
+//Helper Mixins for quickly creating BEM rules
+@mixin e($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+@mixin m($modifier) {
+  &--#{$modifier} {
+    @content;
   }
 }
