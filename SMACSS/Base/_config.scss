@@ -73,3 +73,16 @@ $palettes: (
 
 //IMAGES
 $path--rel: '../img';
+
+//GRID
+
+$g-col-width    : 65px;   //Column width
+$g-gutter-width : 20px;   //Gutter width
+$g-col-count    : 12;     //Number of columns
+$g-cont-max-w   : 1050px; //Max width of a grid container
+
+//Breakpoints
+
+$brkpoint-sm  : 1px;
+$brkpoint-md  : 768px;
+$brkpoint-lg  : 1100px;
